@@ -1,0 +1,194 @@
+[
+  {
+    "description": "Battery light on dashboard",
+    "slug": "battery-light-on-dashboard"
+  },
+  {
+    "description": "Dimming headlights at idle",
+    "slug": "dimming-headlights-at-idle"
+  },
+  {
+    "description": "Car stalls while driving",
+    "slug": "car-stalls-while-driving"
+  },
+  {
+    "description": "Engine misfire under load",
+    "slug": "engine-misfire-under-load"
+  },
+  {
+    "description": "Rough idle",
+    "slug": "rough-idle"
+  },
+  {
+    "description": "Poor fuel economy",
+    "slug": "poor-fuel-economy"
+  },
+  {
+    "description": "Cylinder misfire (P030X codes)",
+    "slug": "cylinder-misfire-p030x-codes"
+  },
+  {
+    "description": "Hesitation on acceleration",
+    "slug": "hesitation-on-acceleration"
+  },
+  {
+    "description": "Engine cranks but won't start",
+    "slug": "engine-cranks-but-wont-start"
+  },
+  {
+    "description": "Loss of power under load",
+    "slug": "loss-of-power-under-load"
+  },
+  {
+    "description": "Whining noise from fuel tank",
+    "slug": "whining-noise-from-fuel-tank"
+  },
+  {
+    "description": "Long crank time before start",
+    "slug": "long-crank-time-before-start"
+  },
+  {
+    "description": "Stalling at idle",
+    "slug": "stalling-at-idle"
+  },
+  {
+    "description": "Engine overheating",
+    "slug": "engine-overheating"
+  },
+  {
+    "description": "Coolant leak from front of engine",
+    "slug": "coolant-leak-from-front-of-engine"
+  },
+  {
+    "description": "Grinding noise from water pump",
+    "slug": "grinding-noise-from-water-pump"
+  },
+  {
+    "description": "Coolant leaking from radiator",
+    "slug": "coolant-leaking-from-radiator"
+  },
+  {
+    "description": "Overheating at idle but not at speed",
+    "slug": "overheating-at-idle-but-not-at-speed"
+  },
+  {
+    "description": "Squealing noise when braking",
+    "slug": "squealing-noise-when-braking"
+  },
+  {
+    "description": "Grinding noise when braking",
+    "slug": "grinding-noise-when-braking"
+  },
+  {
+    "description": "Soft brake pedal",
+    "slug": "soft-brake-pedal"
+  },
+  {
+    "description": "Steering wheel vibration when braking",
+    "slug": "steering-wheel-vibration-when-braking"
+  },
+  {
+    "description": "Pulsating brake pedal",
+    "slug": "pulsating-brake-pedal"
+  },
+  {
+    "description": "Clicking noise when turning key",
+    "slug": "clicking-noise-when-turning-key"
+  },
+  {
+    "description": "Engine cranks slowly",
+    "slug": "engine-cranks-slowly"
+  },
+  {
+    "description": "No crank, no start",
+    "slug": "no-crank-no-start"
+  },
+  {
+    "description": "Check engine light P0131/P0135",
+    "slug": "check-engine-light-p0131p0135"
+  },
+  {
+    "description": "P0420 catalytic converter efficiency",
+    "slug": "p0420-catalytic-converter-efficiency"
+  },
+  {
+    "description": "Failed emissions test",
+    "slug": "failed-emissions-test"
+  },
+  {
+    "description": "Clunking noise over bumps",
+    "slug": "clunking-noise-over-bumps"
+  },
+  {
+    "description": "Steering wheel shimmy",
+    "slug": "steering-wheel-shimmy"
+  },
+  {
+    "description": "Uneven tire wear",
+    "slug": "uneven-tire-wear"
+  },
+  {
+    "description": "Knocking noise when turning",
+    "slug": "knocking-noise-when-turning"
+  },
+  {
+    "description": "Steering feels loose",
+    "slug": "steering-feels-loose"
+  },
+  {
+    "description": "AC not blowing cold",
+    "slug": "ac-not-blowing-cold"
+  },
+  {
+    "description": "AC clutch not engaging",
+    "slug": "ac-clutch-not-engaging"
+  },
+  {
+    "description": "Loud noise from AC compressor",
+    "slug": "loud-noise-from-ac-compressor"
+  },
+  {
+    "description": "Heater not working properly",
+    "slug": "heater-not-working-properly"
+  },
+  {
+    "description": "Engine takes long time to warm up",
+    "slug": "engine-takes-long-time-to-warm-up"
+  },
+  {
+    "description": "Squealing noise from engine",
+    "slug": "squealing-noise-from-engine"
+  },
+  {
+    "description": "Belt slipping off pulleys",
+    "slug": "belt-slipping-off-pulleys"
+  },
+  {
+    "description": "Visible cracks on belt",
+    "slug": "visible-cracks-on-belt"
+  },
+  {
+    "description": "Check engine light P0101",
+    "slug": "check-engine-light-p0101"
+  },
+  {
+    "description": "Poor acceleration",
+    "slug": "poor-acceleration"
+  },
+  {
+    "description": "Reduced engine power warning",
+    "slug": "reduced-engine-power-warning"
+  },
+  {
+    "description": "High idle",
+    "slug": "high-idle"
+  },
+  {
+    "description": "Check engine light P0449",
+    "slug": "check-engine-light-p0449"
+  },
+  {
+    "description": "Hard to fill gas tank",
+    "slug": "hard-to-fill-gas-tank"
+  }
+]
