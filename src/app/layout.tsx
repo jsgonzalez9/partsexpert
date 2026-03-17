@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "PartsExpert - Technical Compatibility Database",
   description: "The definitive compatibility resource for industrial and automotive parts",
+  verification: {
+    google: "bcZ_Je5hEvkF_9SfrjzTOT8pPpbiMY3oSXzBcPkkJVc",
+  },
 };
 
 export default function RootLayout({
