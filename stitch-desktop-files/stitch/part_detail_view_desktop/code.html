@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Part Detail - IndustrialParts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-6 py-3 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-8">
+<div class="flex items-center gap-8 flex-1">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">settings_input_component</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">IndustrialParts</h2>
+</div>
+<div class="hidden md:flex flex-1 max-w-md">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-sm">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm" placeholder="Search components, SKU, or manuals..." type="text"/>
+</div>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Catalog</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 overflow-hidden">
+<img alt="User avatar" data-alt="Corporate user profile avatar silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCWE8G4gPNHLlPCn3TtIPZvRKqF4DUnEPSrHc8k40WMZuQ1s4yh6r6gp1zlJ2lgVBY3LrD-XzSw9eKJ-cyxWVWsg9uLQLzP88gyYscqFwDWOdFJQ12hntM4qZD8PUs-mL3PItMSxUbn00tjbWkRpNdKmRVhugK0bnxtnvT-i-07rB_5Ili3VNnm62Q689U0Sdpjo28_ynRSIwY5frFWPzicv3_e09q72epCkEX_gpCgJPFqiVv4sEAkrXmdGWdC47neG1mPIDU_8"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-7xl mx-auto w-full px-6 py-8 flex flex-col gap-8">
+<!-- Breadcrumbs and Fitment Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<nav class="flex items-center gap-2 text-xs text-slate-500 font-medium uppercase tracking-wider">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Engine Systems</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-200">Pistons</span>
+</nav>
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Heavy-Duty Piston Assembly P-9000</h1>
+<p class="text-slate-500 dark:text-slate-400">High-performance forged aluminum alloy for heavy industrial diesel engines.</p>
+</div>
+<!-- Verified Fit Selector -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1 rounded-xl shadow-sm flex items-center">
+<div class="flex items-center gap-2 px-4 py-2 border-r border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-green-600">check_circle</span>
+<span class="text-sm font-bold">Verified Fit</span>
+</div>
+<select class="bg-transparent border-none focus:ring-0 text-sm font-medium py-2 pl-4 pr-10 cursor-pointer">
+<option>2024 Industrial Hauler X-12</option>
+<option>2023 Heavy Duty Excavator</option>
+<option>2022 Mining Truck GT</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Content: Image and Specs -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Image Gallery Placeholder -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 flex items-center justify-center aspect-video relative overflow-hidden group">
+<img alt="Industrial Piston Assembly" class="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal" data-alt="High quality chrome finished industrial engine piston on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOZnlzBX6KLq56HzeEqg0lVDJg8LaaUkv2NNBiGHpCeEyNJzblVC-ItyH_LqoUJAaF3E8N3LRg353gOq3xyrtwesIGfu6ArUQ3byznhkwbpGjfuyVoKJoj1pWXu-52pvgN7_ZdeGD6OGCnxKvNoClBhpAgjI8FG7oiMla86S-JPLuINu_2OGHR-dqYRy1HpB6dY8cHqBX0Vx58Pndr3oB1z8delQ0B4kfBOY2XE88jbX9IAsE1L_s3A64Vj2XvSRsq6zJr5mMQ8wY"/>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<div class="w-16 h-16 rounded-lg border-2 border-primary bg-white cursor-pointer overflow-hidden">
+<img alt="Thumbnail" data-alt="Close up thumbnail of the piston ring assembly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRdPrBjX4N3VSZdQu621X-ajy5M6aEW1dWbzP2_twf-HvTPh30gcLQSYl4peHdipHUJrp7s3CUizoCykxgc8nv5Wgn1r5ND__U7JhOKECzZYqti3rarXhwSNFDmFhd8TChgM-c4QFCt-Zlgu627Ec-vqgIxmBk00JgLgrdLrPYB6meEJxrT-G9DmTp_NmFeY0WL9GiMXpPoue6sXwfw8Huhnj6C82Zhi5Js2JhV-3G-iT3z_SZGCSgpj7cfdTBuPHwv5X4-bgqXec"/>
+</div>
+<div class="w-16 h-16 rounded-lg border border-slate-200 bg-white cursor-pointer overflow-hidden opacity-60 hover:opacity-100 transition-opacity">
+<img alt="Thumbnail" data-alt="Technical drawing of a piston side profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0vr3egMc3IX7BJ1lCmsf_eA4i4aOc0dDJC9Nc6Xrvo_lq_s_h7lcUtB1Ox7bHKvNcqq075nPbD5BFyOdFZzv2Rz8CalxhjXl1qJQ2Pus13LK4XLoyLnN96BAUXsg8cr8gHWXbgCond1RsHncCKq2xLxf-BLCe_sGfp52J2CUiUyKv_HYrBCyBJQtHVdBRzPAPYBWlPcybtlDMuTJ9RomHUVfRCn8lGAMzLLy-81_iHCJQhuMaRQ7RdliBh8f527X11o6bumrxL2Q"/>
+</div>
+</div>
+</div>
+<!-- Technical Specs Table -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="font-bold text-lg">Technical Specifications</h3>
+<button class="text-primary text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download CAD
+                            </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 font-medium">
+<tr>
+<th class="px-6 py-3">Parameter</th>
+<th class="px-6 py-3">Metric Value</th>
+<th class="px-6 py-3">Imperial Value</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 font-medium text-slate-600 dark:text-slate-300">Bore Diameter</td>
+<td class="px-6 py-4">120.00 mm</td>
+<td class="px-6 py-4">4.724 in</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium text-slate-600 dark:text-slate-300">Compression Height</td>
+<td class="px-6 py-4">75.50 mm</td>
+<td class="px-6 py-4">2.972 in</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium text-slate-600 dark:text-slate-300">Wrist Pin Diameter</td>
+<td class="px-6 py-4">45.00 mm</td>
+<td class="px-6 py-4">1.771 in</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium text-slate-600 dark:text-slate-300">Material Grade</td>
+<td class="px-6 py-4" colspan="2">A356.0-T6 Aluminum Alloy</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium text-slate-600 dark:text-slate-300">Weight</td>
+<td class="px-6 py-4">1,450 g</td>
+<td class="px-6 py-4">3.19 lbs</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Affiliate Stack -->
+<aside class="space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm sticky top-24">
+<div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Verified Vendor</span>
+</div>
+<h3 class="text-xl font-bold">Affiliate Stack</h3>
+<p class="text-sm text-slate-500 mt-1">Sourced from preferred suppliers</p>
+</div>
+<div class="space-y-4">
+<!-- Affiliate Action Button -->
+<a class="flex w-full items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-4 rounded-xl transition-all shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+                                Check Price on Amazon
+                            </a>
+<!-- Trust Badges -->
+<div class="grid grid-cols-1 gap-3 pt-2">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<p class="text-sm font-bold">Trust Shield</p>
+<p class="text-xs text-slate-500">100% Genuine Part Guarantee</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+<div>
+<p class="text-sm font-bold">Confirmed Fit</p>
+<p class="text-xs text-slate-500">Matches OEM Specifications</p>
+</div>
+</div>
+</div>
+<!-- Additional Info -->
+<div class="mt-8 space-y-4 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800/50">
+<span>Part Number:</span>
+<span class="font-mono font-medium text-slate-900 dark:text-white">IP-9000-AD</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800/50">
+<span>In Stock:</span>
+<span class="text-green-600 font-bold">14 Units</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span>Est. Delivery:</span>
+<span class="text-slate-900 dark:text-white font-medium">2-4 Business Days</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            Compare with OEM Alternative
+                        </button>
+</div>
+<!-- Warehouse Location Widget -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-400">local_shipping</span>
+<h4 class="font-bold text-sm">Regional Availability</h4>
+</div>
+<div class="h-32 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden relative">
+<div class="absolute inset-0 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-xs font-medium text-slate-400">Map view of Chicago Warehouse</span>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+</div>
+</div>
+<div class="mt-3">
+<p class="text-xs font-bold">Chicago Distribution Center</p>
+<p class="text-[10px] text-slate-500">Available for local pickup within 2 hours</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 space-y-4">
+<div class="flex items-center gap-2 text-primary opacity-50 grayscale">
+<span class="material-symbols-outlined">settings_input_component</span>
+<h2 class="text-lg font-bold">IndustrialParts</h2>
+</div>
+<p class="text-sm text-slate-500 max-w-sm">
+                        The world's leading database for industrial components, specifications, and verified fitment data for heavy machinery.
+                    </p>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-4">Resources</h5>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">API Documentation</a></li>
+<li><a class="hover:text-primary" href="#">CAD Library</a></li>
+<li><a class="hover:text-primary" href="#">Service Manuals</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-sm mb-4">Support</h5>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Contact Engineering</a></li>
+<li><a class="hover:text-primary" href="#">Returns &amp; Warranty</a></li>
+<li><a class="hover:text-primary" href="#">System Status</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+<p>© 2024 IndustrialParts Solutions Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-slate-600" href="#">Privacy Policy</a>
+<a class="hover:text-slate-600" href="#">Terms of Service</a>
+<a class="hover:text-slate-600" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

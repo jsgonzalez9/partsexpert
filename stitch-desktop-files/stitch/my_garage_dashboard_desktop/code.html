@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Garage Dashboard - Industrial Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .sidebar-item-active { background-color: rgba(236, 91, 19, 0.1); border-left: 4px solid #ec5b13; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight">My Garage</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest">Industrial Ed.</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="sidebar-item-active flex items-center gap-3 px-4 py-3 rounded-r-lg text-primary font-semibold" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">minor_crash</span>
+<span>Active Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Parts Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">build</span>
+<span>Maintenance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+<span>Order History</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male mechanic in garage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDTHL1xDz6CbnoPHCv6wlBvBAyn6J33t1zSuZ5_XeJYyvR6puY8U-TIyph7wGoHyPXhNFVwgjOtwzq7XYEmyNUwBCrGNcA-Nfqi5VOnUA3mbdfsXZ6YOZMLu3U6scbXSx2kVjyT8xJmHwHtm1vwcqwaquPh2mQInrQxWM6PLNlQBFIC-HZ00tYY0IJPpy5vVplc54TbQOjJvrGtipVzg57uSpkGtnrBQ1w0G7vBEqpVyFskUHU32XCY3gf-fOA5iE4T4pvEEJDIIw"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Rivet</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Lead Builder</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">settings</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-[#1a110b] overflow-y-auto">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-bottom border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Search projects, parts, or manuals..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl font-bold text-sm hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Build</span>
+</button>
+</div>
+</header>
+<div class="px-8 py-6">
+<div class="flex flex-col gap-1 mb-8">
+<h2 class="text-3xl font-black tracking-tight">Active Projects</h2>
+<p class="text-slate-500 dark:text-slate-400">Currently managing 4 industrial-scale restorations</p>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Project Card 1 -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dark red Mazda RX-7 in a moody garage setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx6DrQOX8GeLcy9w3NY4pzqF3oWwUxG8wquGDcBr2xq5c5ocMhJuZia0bmSeenhNJ1P_F9mWHLRdO-LopnbwjfLVweOBW2WQJz_QxPQ5mRtyZCydPC-hY-VTzHnwsigWFyfe0nBhKN-zm31Ao31bUncXsmdmwUbuuVk6bUaYbK0MJWoA4iAtlgC5mx9xZkey7PZ3jgrWCQCSda--GlNnSRbTmsT08DH4DZAyX63AnCo6-fikhGKWxqkPwqWOLmjkx_5wS8SCgwQ9k"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Chassis Restoration</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-bold">1992 Mazda RX-7 FD</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Rotary Build Series</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">shopping_cart</span> In Cart
+                                </span>
+<span class="font-bold">2 items</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-blue-500">local_shipping</span> Ordered
+                                </span>
+<span class="font-bold">8 items</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-amber-500">favorite</span> Wishlist
+                                </span>
+<span class="font-bold">15 items</span>
+</div>
+</div>
+<div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-300 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Team member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiKmkOIkPrcKQ_wd2q42dYQ1PcKeCOZeDvAf9gsh_uD-zqInqN8ecyoTFQFiS3owbDzuEcw4n6dbK44V9Bxe0d042-Wm68sMiA9h8E_bsKEDtgxXB2cgkXs8_erBPbrdlN9lk4W7ApF1BlkwX5wCIv2vU7VO7bRXqmHY0AisFG9MkmZv1_gCgt-E3GSHxMyWnsxmbmFa-xmpPRTX1siWOPet5Vi5mDzwQrAaab6LuO9-gIQ5vGOyREdvT-dtVFsIN4_0_4MI9pFkE"/>
+</div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-300 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Team member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiD0Lm_wR9svRpCNVy--CEfW95aHQ-OpDVbPsA6jAGkGQR9vgHWw7TDrXHPDdYiCwUqJ9rERgoL3bLP30vFYiTSoF8c8xdlmjD6-OFoNG4iAC5GZ0Qjd2WCH0IludqpOjPog29bEet-El7dyCFBuUa3LTq8dzTvltt7lkGf8txWvWbYZ_ssJ9YaYUrdP9Dxqowq0ddRPaIxcgjOWyuU6fzoJsl_MilWqPVAxJs93ozq5bhWXmjMGvdV1OxFitDqRRDz7gSUexe7bU"/>
+</div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-primary flex items-center justify-center text-[10px] text-white font-bold">+2</div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 uppercase tracking-widest">
+                                View Logs <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Silver Porsche 718 Cayman GT4 at a race track" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl2g-66p-q5hEsMk4b1kAacJmJV36r4eQGM3k0KWPEJZmK5WIMigUpNMobumWXGmFw4bH7FmZ0UGrFZ0-TyBiNKvVPTJyDvpgqqCG-NJ1iGptIk0PPxCAarFxS1DzIcaldBytgIUkYu_4sgAD5VDeU7k3gFe8h6LdCb5f7go6X8RYi5YzzwEsrsKqtNpQtQ2zcQWI6R0Pc5PCBTHcnOIFaXPh4bGX0QtWq7XLh3T5YkxqHvresIXI54_aJtOeJKfVLNb17ld71iBc"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Track Prep</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-bold">2021 Porsche 718 GT4</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Suspension &amp; Aero</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">shopping_cart</span> In Cart
+                                </span>
+<span class="font-bold">0 items</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-blue-500">local_shipping</span> Ordered
+                                </span>
+<span class="font-bold">4 items</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-amber-500">favorite</span> Wishlist
+                                </span>
+<span class="font-bold">5 items</span>
+</div>
+</div>
+<div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-300 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Team member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJwNbGvQp07hj3UqwjSKuADvhi2t57AxWgZZiG0M0vaqF-YJV6CRnYz1igaL4k1yfqbfj6CbFGtnM-gcEqcK88o_FFUf8snbZMdO7zfZ0xhtrDSXefhUvchst51NaWlcYmNAlTQMOp3tGayTxkGH28shOnllVsOUnqpK_iz3_ekBR0gu2ytCAuwXOsJjH_a2ZqOFwvTxWOY7YjCDxuFiIUtH0vsFlJAGZmXnrNq7G8naUzUv5Gg85gqokcuHgLr4mWgZueshyVPfA"/>
+</div>
+</div>
+<button class="text-xs font-bold text-primary flex items-center gap-1 uppercase tracking-widest">
+                                View Logs <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State / Add Card -->
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl flex flex-col items-center justify-center p-8 bg-slate-50/50 dark:bg-slate-900/20 group cursor-pointer hover:border-primary transition-colors">
+<div class="size-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors mb-4">
+<span class="material-symbols-outlined text-[32px]">add_circle</span>
+</div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Add New Project</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 text-center mt-2 max-w-[200px]">Start tracking a new build, donor car, or maintenance project.</p>
+</div>
+</div>
+<!-- Parts Status Detail Section -->
+<div class="mt-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold">Priority Parts Status</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">All Statuses</span>
+<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold rounded-full">Ordered Only</span>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900/50 text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-widest font-bold">
+<th class="px-6 py-4">Part Details</th>
+<th class="px-6 py-4">Project</th>
+<th class="px-6 py-4">Supplier</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Est. Delivery</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">all_mode</span>
+</div>
+<div>
+<p class="text-sm font-bold">Ohlins Road &amp; Track Coilovers</p>
+<p class="text-xs text-slate-500">SU-718-GT4-01</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Porsche 718 GT4</td>
+<td class="px-6 py-4 text-sm">RennLine Performance</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase rounded">In Transit</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">Oct 24, 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">tire_repair</span>
+</div>
+<div>
+<p class="text-sm font-bold">Apex VS-5RS Forged Wheels</p>
+<p class="text-xs text-slate-500">WH-RX7-1895</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Mazda RX-7 FD</td>
+<td class="px-6 py-4 text-sm">Apex Race Parts</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase rounded">Ordered</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">Nov 02, 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">engineering</span>
+</div>
+<div>
+<p class="text-sm font-bold">Brembo GT Big Brake Kit</p>
+<p class="text-xs text-slate-500">BR-718-400-FR</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Porsche 718 GT4</td>
+<td class="px-6 py-4 text-sm">ECS Tuning</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase rounded">Wishlist</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">--</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Quick Info Panel -->
+<aside class="w-80 border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark hidden lg:flex flex-col p-6 overflow-y-auto">
+<h3 class="text-sm font-black uppercase tracking-widest text-slate-400 mb-6">Upcoming Service</h3>
+<div class="space-y-6">
+<div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 mb-1">Tomorrow at 09:00 AM</p>
+<p class="text-sm font-bold leading-tight">Dyno Tuning Session</p>
+<p class="text-xs text-slate-500 mt-1">1992 Mazda RX-7</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined">oil_barrel</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 mb-1">Oct 28, 2023</p>
+<p class="text-sm font-bold leading-tight">Post-Break-In Oil Change</p>
+<p class="text-xs text-slate-500 mt-1">2021 Porsche 718 GT4</p>
+</div>
+</div>
+</div>
+</div>
+<h3 class="text-sm font-black uppercase tracking-widest text-slate-400 mt-10 mb-6">Market Trends</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-2 bg-green-500 rounded-full"></div>
+<span class="text-sm">RX-7 FD Value</span>
+</div>
+<span class="text-sm font-bold">+4.2%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-16 rounded-lg relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-primary/10"></div>
+<!-- Abstract Chart Mockup -->
+<svg class="absolute inset-0 w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 40 L0 30 L20 25 L40 32 L60 20 L80 15 L100 10 L100 40 Z" fill="currentColor" fill-opacity="0.1"></path>
+<path d="M0 30 L20 25 L40 32 L60 20 L80 15 L100 10" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<div class="rounded-xl bg-primary/5 border border-primary/20 p-5">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Inventory Alert</p>
+<p class="text-sm leading-relaxed mb-4">You have <span class="font-bold">3 parts</span> in your cart that are low on stock at the supplier.</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg uppercase tracking-widest shadow-lg shadow-primary/20">Checkout Now</button>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

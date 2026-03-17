@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Garage - Saved Parts Dashboard</title>
+<!-- Inter font from Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#f96706',
+            surface: {
+              DEFAULT: '#121212',
+              card: '#1e1e1e',
+              border: '#333333'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'custom': '4px', // ROUND_FOUR implementation
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="global-styles">
+    body {
+      background-color: #121212;
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Linear-inspired subtle gradients and borders */
+    .linear-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: border-color 0.2s ease;
+    }
+    .linear-card:hover {
+      border-color: rgba(249, 103, 6, 0.4);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-20">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-surface-border p-4 flex justify-between items-center" data-purpose="app-header">
+<div>
+<h1 class="text-xs font-semibold uppercase tracking-widest text-gray-500">Dashboard</h1>
+<p class="text-xl font-bold">My Garage</p>
+</div>
+<div class="flex items-center gap-3">
+<!-- Search Icon Placeholder -->
+<div class="w-10 h-10 rounded-custom border border-surface-border flex items-center justify-center text-gray-400">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+</div>
+<!-- Profile Avatar -->
+<div class="w-10 h-10 rounded-custom bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-bold">
+        JD
+      </div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="p-4 space-y-6">
+<!-- BEGIN: ActionHeader -->
+<section class="flex items-center justify-between" data-purpose="page-actions">
+<h2 class="text-sm font-medium text-gray-400">Active Projects (3)</h2>
+<button class="bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded-custom text-sm font-semibold flex items-center gap-2 transition-colors" data-purpose="add-project-btn">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14m-7-7v14"></path></svg>
+        Add New Project
+      </button>
+</section>
+<!-- END: ActionHeader -->
+<!-- BEGIN: ProjectCard_1 -->
+<article class="linear-card rounded-custom p-5 space-y-4" data-purpose="project-container">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-lg font-bold">1992 Mazda RX-7 (FD3S)</h3>
+<p class="text-xs text-gray-500 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+            In Progress • Last updated 2h ago
+          </p>
+</div>
+<button class="text-gray-500 hover:text-white">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+</button>
+</div>
+<!-- Parts List -->
+<div class="space-y-3" data-purpose="saved-parts-list">
+<!-- Part Item -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-custom border border-white/5">
+<div class="w-12 h-12 bg-surface-border rounded-custom overflow-hidden">
+<img alt="Part thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcQAKtHbHxIWnkRsCXzlKT7DD4rtQHrBvIBg83QzmAl-ixin-YE0S2gdWEKHqdFkTArtjQ_qBXQF2Ax3YOV9-FESqzces3ckqWup-ZNJKwPdDp1qbqHxDd6Is42KsLc_1siyYRiPMKP85-p62FS_JrLXaBBTkrHXlBbyuw3CtbYilsmdr4rhUxJTQY6kh6ebFgH1qlJtq_G60pbn2jh6LYImzCCfzuaXM-Tr4VJjYZE0mTJOq5wzgdizSmu9QEL827y0OI4b5n6dw"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium">Garrett G30-660 Turbo</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-500 border border-orange-500/20 uppercase tracking-tighter">Ordered</span>
+</div>
+<p class="text-xs text-gray-500">$1,450.00 • Amazon Automotive</p>
+</div>
+</div>
+<!-- Part Item -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-custom border border-white/5">
+<div class="w-12 h-12 bg-surface-border rounded-custom overflow-hidden">
+<img alt="Part thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtowoALSGu5uA35o-9pxr74qD_f9N81OeKW7cbuLMKEz3N9UfG1ElTQUx48SSGu8KW4Qb4iQgWg9RHL-xboKYho44S0GvtqmaSsSDCQuo0VmbEM9fI2RNXvN_2B39l-xurthkjk-gF57tKGNBgdFXw8bxEdxNojQqKVBxy1ft50hKuPUvjacxiG5obZtVluBEnPjH5CM0Wg1nInsKEmRF191MUTkvW3r2Y1dhANoGy9NUMkpO14uC5EEs4Tr_zrOzaa0BWxLpXsDg"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium">Haltech Elite 2500 ECU</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20 uppercase tracking-tighter">In Cart</span>
+</div>
+<p class="text-xs text-gray-500">$2,100.00 • Enjuku Racing</p>
+</div>
+</div>
+</div>
+<button class="w-full text-center py-2 text-xs font-medium text-gray-500 hover:text-primary transition-colors border-t border-white/5 mt-2">
+        View all 12 parts
+      </button>
+</article>
+<!-- END: ProjectCard_1 -->
+<!-- BEGIN: ProjectCard_2 -->
+<article class="linear-card rounded-custom p-5 space-y-4" data-purpose="project-container">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-lg font-bold">2021 Porsche 718 GT4</h3>
+<p class="text-xs text-gray-500 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            Planning Phase • Created Oct 12
+          </p>
+</div>
+<button class="text-gray-500 hover:text-white">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+</button>
+</div>
+<!-- Parts List -->
+<div class="space-y-3" data-purpose="saved-parts-list">
+<!-- Part Item -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-custom border border-white/5">
+<div class="w-12 h-12 bg-surface-border rounded-custom overflow-hidden">
+<img alt="Part thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFHoePfKlzjgdteKzCuaV9dDTJvEHGjQNLzQJQzKuiwj8EoE5U38BOgAbEPxp9SSZBNmV33kXI_cVhzGRZFN85fYPiJeOuta34BEGx70qaXYHGug2g7Wz4Ymy1KTjuq_WH7lI5UFtSx_XQf9CUILAbQbKK5KWTg-VGWZR1U55dlvMexhJjMYWF9zGzSq8YFYJUGSirtTikgIaTQ6hZAOq_tDY5wz0X40TVd7wTodteDrtYzf1CtmP8cuFg54sKRwE-xl0aP8DHOw"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium">Akrapovič Slip-On Race Line</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-400 border border-gray-500/20 uppercase tracking-tighter">Wishlist</span>
+</div>
+<p class="text-xs text-gray-500">$5,400.00 • Fabspeed</p>
+</div>
+</div>
+</div>
+<button class="w-full text-center py-2 text-xs font-medium text-gray-500 hover:text-primary transition-colors border-t border-white/5 mt-2">
+        View all 4 parts
+      </button>
+</article>
+<!-- END: ProjectCard_2 -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-lg border-t border-surface-border px-8 py-3 flex justify-between items-center" data-purpose="mobile-nav">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+<span class="text-[10px] font-medium">Garage</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" ry="2" width="18" x="3" y="3"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+<span class="text-[10px] font-medium">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v20"></path><path d="m17 5-5-3-5 3"></path><path d="m17 19-5 3-5-3"></path><path d="M2 12h20"></path><path d="m5 7-3 5 3 5"></path><path d="m19 7 3 5-3 5"></path></svg>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+</body></html>
