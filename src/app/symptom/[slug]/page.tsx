@@ -1,7 +1,7 @@
 import { STATIC_PARTS } from "@/lib/static-data";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, Wrench, ArrowRight, ShieldAlert, Clock, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, Wrench, ArrowRight, ShieldAlert, Clock, Phone, MapPin, CheckCircle2, ShieldCheck, Database } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -93,7 +93,7 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-zinc-100 selection:text-zinc-900">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-zinc-100 selection:text-zinc-900 font-mono">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -119,7 +119,7 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
             </div>
           </div>
 
-          <p className="text-lg text-zinc-400 mb-12 leading-relaxed">
+          <p className="text-lg text-zinc-400 mb-12 leading-relaxed font-sans">
             Diagnosing <span className="text-zinc-100 font-semibold">{symptomName}</span> requires isolating the failure between electronic control modules and mechanical wear items. Below is the verified engineering data for this symptom.
           </p>
 
@@ -157,7 +157,7 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
             <div className="bg-zinc-100 rounded-xl p-8 text-zinc-950 flex flex-col justify-between shadow-2xl shadow-zinc-100/10">
               <div>
                 <h3 className="font-bold text-lg mb-4">Recommended Fix</h3>
-                <p className="text-zinc-600 text-sm leading-snug mb-8">
+                <p className="text-zinc-600 text-sm leading-snug mb-8 font-sans">
                   Get the exact specification <span className="font-bold">{firstPart.brand}</span> replacement today.
                 </p>
               </div>
@@ -170,12 +170,30 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
             </div>
           </div>
 
+          {/* Engineering Injection: Decision Matrix Link */}
+          <div className="mb-16 border border-zinc-900 bg-zinc-900/10 p-10 group relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 text-zinc-900 opacity-20 group-hover:rotate-12 transition-transform">
+               <Database size={120} />
+            </div>
+            <p className="text-[10px] text-zinc-600 uppercase tracking-[0.5em] mb-4 font-bold">Engineering_Audit // Procurement_Guide</p>
+            <h3 className="text-2xl font-bold uppercase mb-4 tracking-tighter text-zinc-100">Recommended {firstPart.category} Components</h3>
+            <p className="text-zinc-500 mb-8 max-w-2xl font-sans text-sm leading-relaxed">
+              Based on failure mode analysis for the GM K2XX platform, we have prioritized specific aftermarket brands that exceed OEM thermal dissipation specs.
+            </p>
+            <Link href={`/compare/best-${slugify(firstPart.category)}-chevy-silverado-1500`}>
+              <Button variant="outline" className="border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:border-zinc-100 font-mono text-[10px] uppercase tracking-widest h-12 rounded-none px-8 shadow-2xl shadow-zinc-100/5">
+                Access Decision Matrix
+                <ArrowRight size={14} className="ml-2" />
+              </Button>
+            </Link>
+          </div>
+
           {/* Lead Gen Injection: Get Help Near You */}
           <div className="mb-16 bg-zinc-900 border border-zinc-800 rounded-xl p-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex-1">
-                <h2 className="text-xl font-bold mb-2">Need this fixed today?</h2>
-                <p className="text-zinc-500 text-sm mb-0">
+                <h2 className="text-xl font-bold mb-2 uppercase tracking-tight">Need this fixed today?</h2>
+                <p className="text-zinc-500 text-sm mb-0 font-sans">
                   Secure professional diagnosis and installation from a certified GM specialist in your area. Avoid downstream damage.
                 </p>
               </div>
@@ -192,12 +210,12 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
             </div>
           </div>
 
-          <h2 className="text-xl font-bold mb-8 flex items-center gap-3">
+          <h2 className="text-xl font-bold mb-8 flex items-center gap-3 uppercase tracking-tighter">
             <Wrench className="text-zinc-500" size={20} />
             Technical Performance Components
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-8 font-sans">
             {matchedParts.map(part => {
               const matchedSymptom = part.symptoms.find(s => slugify(s.description) === slug);
               return (
@@ -205,21 +223,21 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
                   <div className="flex flex-col md:flex-row gap-10">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest bg-zinc-950 px-2 py-1 rounded border border-zinc-800">{part.brand}</span>
+                        <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest bg-zinc-950 px-2 py-1 rounded border border-zinc-800 font-bold">{part.brand}</span>
                         <Badge variant="outline" className="text-zinc-400 border-zinc-800 font-bold uppercase text-[9px] tracking-widest">{matchedSymptom?.urgency}</Badge>
                       </div>
                       
-                      <h3 className="text-2xl font-bold mb-4">{part.name}</h3>
+                      <h3 className="text-2xl font-bold mb-4 text-zinc-100 uppercase tracking-tight">{part.name}</h3>
                       
                       <p className="text-zinc-500 mb-8 leading-relaxed">
                         The <Link href={`/part/${part.part_number}`} className="text-zinc-200 font-bold underline decoration-zinc-700 underline-offset-4 hover:decoration-zinc-100 transition-all italic">failing {part.name}</Link> has been identified as a high-frequency cause for this failure mode. Precision tolerances are required for successful remediation.
                       </p>
 
                       <div className="bg-zinc-950/50 rounded-lg p-6 border border-zinc-800">
-                        <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-4">Engineering Test Protocol</h4>
+                        <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-4 font-bold">Engineering Test Protocol</h4>
                         <div className="space-y-3">
                           {matchedSymptom?.diagnostic_steps.map((step, i) => (
-                            <div key={i} className="flex gap-4 items-start text-sm text-zinc-400">
+                            <div key={i} className="flex gap-4 items-start text-sm text-zinc-400 font-sans">
                               <CheckCircle2 size={16} className="text-zinc-700 mt-0.5 shrink-0" />
                               <p>{step}</p>
                             </div>
@@ -229,14 +247,14 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
                     </div>
 
                     <div className="md:w-64 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-zinc-900 pt-8 md:pt-0 md:pl-8">
-                      <p className="text-[10px] font-mono text-zinc-700 uppercase tracking-widest mb-1">MSRP REFERENCE</p>
-                      <p className="text-3xl font-bold mb-8 tracking-tighter">${part.price.toFixed(2)}</p>
+                      <p className="text-[10px] font-mono text-zinc-700 uppercase tracking-widest mb-1 font-bold">MSRP REFERENCE</p>
+                      <p className="text-3xl font-bold mb-8 tracking-tighter text-zinc-100 font-mono">${part.price.toFixed(2)}</p>
                       <Link href={`/part/${part.part_number}`} className="w-full">
-                        <Button className="w-full bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-black h-12 rounded-none">
+                        <Button className="w-full bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-black h-12 rounded-none tracking-widest text-[10px] uppercase">
                           View compatible parts
                         </Button>
                       </Link>
-                      <a href={`https://amazon.com/s?k=${part.brand}+${part.part_number}`} target="_blank" className="text-[9px] text-zinc-600 mt-6 block underline uppercase tracking-[0.2em] font-mono hover:text-zinc-400">
+                      <a href={`https://amazon.com/s?k=${part.brand}+${part.part_number}`} target="_blank" className="text-[9px] text-zinc-600 mt-6 block underline uppercase tracking-[0.2em] font-mono hover:text-zinc-400 font-bold">
                         External Inventory Link
                       </a>
                     </div>
@@ -246,12 +264,30 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
             })}
           </div>
 
+          {/* Engineering Decision Loop */}
+          <div className="mt-20 p-8 border border-zinc-900 bg-zinc-900/20 rounded-xl">
+            <div className="flex flex-col md:flex-row items-center gap-10">
+              <div className="flex-1 text-white">
+                <h3 className="text-sm font-mono uppercase tracking-[0.3em] font-bold text-zinc-400 mb-4">Engineering_Audit // Decision_Matrix</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-0 font-sans">
+                  Before procurement, review our comparative audit of <span className="text-zinc-100 italic">{firstPart.category}</span> failure rates and thermal stability coefficients. Select the component with the highest MTBF record.
+                </p>
+              </div>
+              <Link href={`/compare/best-${slugify(firstPart.category)}-chevy-silverado-1500`} className="w-full md:w-auto">
+                <Button variant="outline" className="w-full border-zinc-800 text-zinc-400 hover:text-zinc-100 hover:border-zinc-100 font-mono text-[10px] uppercase tracking-widest h-12 rounded-none px-8 font-bold">
+                  View Technical Audit
+                  <ArrowRight size={14} className="ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
           {/* Related Error States */}
-          <div className="mt-20 pt-10 border-t border-zinc-900">
-            <h3 className="text-sm font-mono uppercase tracking-[0.3em] font-bold text-zinc-600 mb-8">Related Error States</h3>
+          <div className="mt-8 pt-10 border-t border-zinc-900">
+            <h3 className="text-sm font-mono uppercase tracking-[0.3em] font-bold text-zinc-600 mb-8 font-bold">Related Error States</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[...relatedSymptoms, ...otherRelatedSymptoms].map((s, i) => (
-                <Link key={i} href={`/symptom/${slugify(s.description)}`} className="group flex items-center justify-between p-6 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-700 transition-all">
+                <Link key={i} href={`/symptom/${slugify(s.description)}`} className="group flex items-center justify-between p-6 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-700 transition-all font-sans">
                   <span className="text-zinc-400 group-hover:text-zinc-100 transition-colors font-medium">{s.description}</span>
                   <ArrowRight size={16} className="text-zinc-800 group-hover:text-zinc-500 transition-colors" />
                 </Link>
@@ -261,8 +297,8 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
         </div>
       </main>
 
-      <footer className="border-t border-zinc-900 mt-32 py-16 bg-zinc-950 text-center">
-        <p className="text-zinc-700 text-[10px] font-mono uppercase tracking-[0.4em]">PartsExpert :: Technical Content Protocol v2.4</p>
+      <footer className="border-t border-zinc-900 mt-32 py-16 bg-zinc-950 text-center text-white">
+        <p className="text-zinc-700 text-[10px] font-mono uppercase tracking-[0.4em] font-bold">PartsExpert :: Technical Content Protocol v2.4</p>
       </footer>
     </div>
   );

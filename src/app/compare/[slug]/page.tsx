@@ -65,7 +65,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
 
           {/* Technical Winner Selection */}
           <div className="grid md:grid-cols-3 gap-1 mb-20 bg-zinc-900 border border-zinc-800">
-            <div className="md:col-span-2 p-12 bg-zinc-950">
+            <div className="md:col-span-2 p-12 bg-zinc-950 text-white">
               <div className="flex items-center gap-3 mb-8">
                 <FlaskRound className="text-zinc-400" size={18} />
                 <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-600">Primary Selection Verdict</span>
@@ -73,25 +73,38 @@ export default async function ComparePage({ params }: ComparePageProps) {
               <h2 className="text-4xl font-bold mb-6 text-zinc-100">
                 {winner.brand} {winner.name}
               </h2>
-              <p className="text-zinc-400 mb-10 leading-relaxed font-sans text-lg">
+              <p className="text-zinc-400 mb-8 leading-relaxed font-sans text-lg">
                 {comparison.verdict}
               </p>
+
+              {/* Technical Inventory Upgrades */}
+              <div className="flex flex-wrap gap-4 mb-10 text-[10px] uppercase font-bold tracking-widest">
+                <div className="flex items-center gap-2 text-zinc-300 border border-zinc-800 px-3 py-1.5 bg-zinc-900/50">
+                  <ShieldCheck size={14} className="text-blue-500" />
+                  Status: IN_STOCK // Dispatch_Confirmed
+                </div>
+                <div className="flex items-center gap-2 text-zinc-300 border border-zinc-800 px-3 py-1.5 bg-zinc-900/50">
+                  <Database size={14} className="text-green-500" />
+                  Fitment: VERIFIED // GM_8CYL_Specs
+                </div>
+              </div>
+
               <a href={winner.affiliateUrl} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-black h-12 rounded-none px-12 group">
-                  EXECUTE ORDER
+                <Button className="bg-zinc-100 text-zinc-950 hover:bg-zinc-200 font-bold h-12 rounded-none px-12 group uppercase tracking-widest">
+                  CHECK INVENTORY LEVELS
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
             </div>
             <div className="p-12 flex flex-col justify-center bg-zinc-900/50">
-              <div className="space-y-10">
+              <div className="space-y-10 text-white">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-zinc-600 mb-2">MSRP Stability</p>
-                  <p className="text-4xl font-bold tracking-tighter">${winner.price.toFixed(2)}</p>
+                  <p className="text-4xl font-bold tracking-tighter text-zinc-100">${winner.price.toFixed(2)}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-zinc-600 mb-2">Reliability Grade</p>
-                  <p className="text-4xl font-bold tracking-tighter">{(winner.rating * 20).toFixed(0)}%</p>
+                  <p className="text-4xl font-bold tracking-tighter text-zinc-100">{(winner.rating * 20).toFixed(0)}%</p>
                 </div>
                 <div className="pt-4 border-t border-zinc-800">
                   <Badge variant="outline" className="text-zinc-500 border-zinc-700 rounded-none uppercase text-[9px] tracking-widest">OEM_COMPATIBLE_VERIFIED</Badge>
@@ -120,7 +133,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
                   <tr>
                     <td className="p-6 text-sm font-mono uppercase text-zinc-600">Retail_Price</td>
                     {comparison.products.map((p, i) => (
-                      <td key={i} className="p-6 font-bold text-lg">${p.price.toFixed(2)}</td>
+                      <td key={i} className="p-6 font-bold text-lg text-white">${p.price.toFixed(2)}</td>
                     ))}
                   </tr>
                   {Object.keys(comparison.products[0].specs).map(spec => (
@@ -152,7 +165,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
           </div>
 
           {/* Component Deep Dives */}
-          <div className="grid md:grid-cols-2 gap-4 mb-24 font-sans">
+          <div className="grid md:grid-cols-2 gap-4 mb-24 font-sans text-white">
             {comparison.products.map((p, i) => (
               <div key={i} className="p-10 border border-zinc-900 bg-zinc-900/10 hover:bg-zinc-900/30 transition-all">
                 <div className="flex justify-between items-start mb-10">
@@ -164,7 +177,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
                     <h5 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-6">Performance Pros</h5>
                     <ul className="space-y-4">
                       {p.pros.map((pro, j) => (
-                        <li key={j} className="text-sm text-zinc-300 flex items-start gap-3 leading-relaxed">
+                        <li key={j} className="text-sm text-zinc-300 flex items-start gap-3 leading-relaxed text-white">
                           <CheckCircle2 size={14} className="text-zinc-600 shrink-0 mt-1" />
                           {pro}
                         </li>
