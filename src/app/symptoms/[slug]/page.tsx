@@ -43,8 +43,8 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
     notFound();
   }
 
-  const parts = page.seo_page_parts?.map((p: any) => p.parts) || [];
-  const firstPart = parts[0] || { name: 'Replacement Component', price: 0, brand: 'EXPERT-SPEC', category: 'General' };
+  const parts = (page.seo_page_parts?.map((p: any) => p.parts) || []).filter(Boolean);
+  const firstPart = parts[0] || { name: 'Replacement Component', price: 0, brand: 'EXPERT-SPEC', category: 'General', part_number: 'diagnostic-required' };
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-zinc-100 selection:text-zinc-900 font-mono">
@@ -64,12 +64,12 @@ export default async function SymptomPage({ params }: SymptomPageProps) {
               <AlertTriangle className="text-zinc-100" size={32} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight capitalize">{page.title}</h1>
+              <h1 className="text-3xl font-bold tracking-tight capitalize">{page.h1_title}</h1>
               <p className="text-zinc-500 font-mono text-sm uppercase tracking-widest">Engineering Diagnostic Protocol</p>
             </div>
           </div>
 
-          <div className="prose prose-invert max-w-none text-lg text-zinc-400 mb-12 leading-relaxed font-sans" dangerouslySetInnerHTML={{ __html: page.content }} />
+          <div className="prose prose-invert max-w-none text-lg text-zinc-400 mb-12 leading-relaxed font-sans" dangerouslySetInnerHTML={{ __html: page.content_body }} />
 
           {/* Lead Gen Box */}
           <div className="mb-16 bg-zinc-900 border border-zinc-800 rounded-xl p-8">
