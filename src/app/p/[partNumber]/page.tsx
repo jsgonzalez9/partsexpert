@@ -1,4 +1,4 @@
-import { STATIC_PARTS, getPartByNumber } from "@/lib/static-data";
+import { getPartByNumber } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import { ResultsView } from "@/components/ResultsView";
 import { CompatibilityChecker } from "@/components/CompatibilityChecker";
@@ -9,15 +9,16 @@ interface PartPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return STATIC_PARTS.map((part) => ({
-    partNumber: part.part_number,
-  }));
-}
-
 export default async function PartPage({ params }: PartPageProps) {
   const { partNumber } = await params;
-  const part = getPartByNumber(partNumber);
+  
+  let part;
+  try {
+    part = await getPartByNumber(partNumber);
+  } catch (error) {
+    console.error('Error fetching part:', error);
+    notFound();
+  }
 
   if (!part) {
     notFound();
@@ -39,7 +40,8 @@ export default async function PartPage({ params }: PartPageProps) {
             <CompatibilityChecker />
           </div>
           <div className="lg:col-span-7">
-            <ResultsView part={part} />
+            {/* Note: ResultsView might need adjustment for the new Part schema if it uses fields that don't match exactly. */}
+            <ResultsView part={part as any} />
           </div>
         </div>
       </div>
