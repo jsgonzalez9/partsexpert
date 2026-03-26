@@ -243,14 +243,43 @@ export const getAllPartNumbers = async (limit = 1000) => {
   return data.map(p => p.part_number);
 };
 
-export const getAllSymptomSlugs = async (limit = 1000) => {
+export const getVehicleYears = async () => {
   const { data, error } = await supabase
-    .from('seo_pages')
-    .select('slug')
-    .eq('page_type', 'symptom')
-    .eq('published', true)
-    .limit(limit);
+    .from('fitment')
+    .select('year')
+    .order('year', { ascending: false });
   
   if (error) throw error;
-  return data.map(p => p.slug);
+  return Array.from(new Set(data.map(f => f.year)));
+};
+
+export const getVehicleMakes = async (year?: number) => {
+  let query = supabase
+    .from('fitment')
+    .select('make')
+    .order('make', { ascending: true });
+  
+  if (year) {
+    query = query.eq('year', year);
+  }
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return Array.from(new Set(data.map(f => f.make)));
+};
+
+export const getVehicleModels = async (make: string, year?: number) => {
+  let query = supabase
+    .from('fitment')
+    .select('model')
+    .eq('make', make)
+    .order('model', { ascending: true });
+  
+  if (year) {
+    query = query.eq('year', year);
+  }
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return Array.from(new Set(data.map(f => f.model)));
 };
