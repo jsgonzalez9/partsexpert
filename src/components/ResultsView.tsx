@@ -11,12 +11,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { motion } from "framer-motion"
-import { CheckCircle2, AlertTriangle, Info, ChevronRight, Layers } from "lucide-react"
-import { PartData } from "@/lib/supabase"
+import { CheckCircle2, AlertTriangle, Info, ChevronRight, Layers, ShieldAlert } from "lucide-react"
+import { Part } from "@/lib/supabase"
 import Link from "next/link"
 
 interface ResultsViewProps {
-  part?: PartData & { failures?: any[] };
+  part?: Part & { failures?: any[] };
 }
 
 export function ResultsView({ part }: ResultsViewProps) {
@@ -103,9 +103,33 @@ export function ResultsView({ part }: ResultsViewProps) {
                         Severity: {failure.severity_score}/10
                       </span>
                     </div>
-                    <p className="text-zinc-100 text-base font-bold mb-3">{failure.symptom}</p>
+                    <div className="flex items-center gap-2 mb-3">
+                      <p className="text-zinc-100 text-base font-bold flex-1">{failure.symptom || failure.symptom_legacy}</p>
+                      {failure.drivable === false && (
+                        <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20 text-[8px] font-bold uppercase py-0 px-1.5 flex items-center gap-1">
+                          <ShieldAlert className="w-2.5 h-2.5" />
+                          Non-Drivable
+                        </Badge>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
+                        <p className="text-[8px] uppercase tracking-widest text-zinc-500 mb-1">Est. Repair Cost</p>
+                        <p className="text-sm font-mono font-bold text-emerald-500">
+                          ${failure.estimated_repair_cost_low} - ${failure.estimated_repair_cost_high}
+                        </p>
+                      </div>
+                      <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
+                        <p className="text-[8px] uppercase tracking-widest text-zinc-500 mb-1">Drivability</p>
+                        <p className={`text-sm font-mono font-bold ${failure.drivable ? 'text-zinc-300' : 'text-red-400'}`}>
+                          {failure.drivable ? 'Safe to Drive' : 'Immediate Risk'}
+                        </p>
+                      </div>
+                    </div>
+
                     <Link 
-                      href={failure.symptom ? `/symptoms/${failure.symptom.toLowerCase().replace(/\s+/g, '-')}` : '#'}
+                      href={failure.slug ? `/symptoms/${failure.slug}` : `/symptoms/${(failure.symptom || failure.symptom_legacy || '').toLowerCase().replace(/\s+/g, '-')}`}
                       className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 group-hover:text-emerald-400 flex items-center gap-1 transition-colors"
                     >
                       View Deep Diagnostic <ChevronRight size={12} />

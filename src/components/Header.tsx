@@ -27,7 +27,7 @@ export function Header() {
 
           <div className="flex items-center gap-4">
             <Link 
-              href="http://localhost:3000" 
+              href={process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://parts-toll-booth-jsgonzalez9.vercel.app"} 
               className="px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[10px] font-bold uppercase tracking-widest text-zinc-400 hover:text-zinc-100 hover:border-zinc-700 transition-all flex items-center gap-2"
             >
               <LayoutDashboard className="w-3 h-3" />

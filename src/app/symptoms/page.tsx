@@ -1,21 +1,12 @@
-"use client"
-
-import { AlertTriangle, ChevronRight, Activity, Zap, Search } from "lucide-react"
-import { motion } from "framer-motion"
+import { Activity, Zap, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { getSEOPagesByType } from "@/lib/supabase"
 
-const COMMON_SYMPTOMS = [
-  { name: "Black Smoke Under Load", category: "Engine", severity: "High" },
-  { name: "Hydraulic Pump Cavitation", category: "Hydraulics", severity: "Critical" },
-  { name: "Erratic Transmission Shift", category: "Drivetrain", severity: "Medium" },
-  { name: "Voltage Drop at Starter", category: "Electrical", severity: "High" },
-  { name: "Coolant in Oil Case", category: "Engine", severity: "Critical" },
-  { name: "Brake Pressure Fade", category: "Safety", severity: "Critical" },
-  { name: "Turbocharger Whine", category: "Intake", severity: "Medium" },
-  { name: "Final Drive Leak", category: "Chassis", severity: "Low" }
-]
+export const revalidate = 3600; // Revalidate every hour
 
-export default function SymptomsPage() {
+export default async function SymptomsPage() {
+  const symptoms = await getSEOPagesByType('symptom', 20);
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-24 max-w-5xl">
       <div className="flex flex-col items-center text-center mb-16">
@@ -36,37 +27,38 @@ export default function SymptomsPage() {
           <div className="h-px flex-1 mx-6 bg-zinc-900 opacity-50" />
         </div>
         
-        {COMMON_SYMPTOMS.map((symptom, idx) => (
-          <motion.div
-            key={symptom.name}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.05 }}
-          >
+        {symptoms.map((symptom: any) => (
+          <div key={symptom.id}>
             <Link 
-              href={`/symptoms/${symptom.name.toLowerCase().replace(/\s+/g, '-')}`}
+              href={`/symptoms/${symptom.slug}`}
               className="group flex items-center justify-between p-6 rounded-2xl bg-zinc-950 border border-zinc-900 hover:border-emerald-500/20 hover:bg-zinc-900/40 transition-all duration-300"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">{symptom.category}</span>
+                  <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">{symptom.page_type}</span>
                   <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-full ${
-                    symptom.severity === 'Critical' ? 'bg-red-500/10 text-red-500' : 
-                    symptom.severity === 'High' ? 'bg-amber-500/10 text-amber-500' : 'bg-zinc-800 text-zinc-400'
+                    symptom.page_priority <= 2 ? 'bg-red-500/10 text-red-500' : 
+                    symptom.page_priority <= 5 ? 'bg-amber-500/10 text-amber-500' : 'bg-zinc-800 text-zinc-400'
                   }`}>
-                    {symptom.severity}
+                    Priority: {symptom.page_priority}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-zinc-300 group-hover:text-zinc-100 transition-colors">
-                  {symptom.name}
+                <h3 className="text-base font-bold text-zinc-300 group-hover:text-zinc-100 transition-colors capitalize">
+                  {symptom.target_keyword || symptom.slug.replace(/-/g, ' ')}
                 </h3>
               </div>
               <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
                 <ChevronRight className="w-4 h-4 text-zinc-700 group-hover:text-emerald-500 transition-colors" />
               </div>
             </Link>
-          </motion.div>
+          </div>
         ))}
+
+        {symptoms.length === 0 && (
+          <div className="md:col-span-2 py-20 text-center border border-dashed border-zinc-900 rounded-3xl">
+            <p className="text-zinc-600 font-mono text-xs uppercase tracking-widest">Diagnostic database initializing...</p>
+          </div>
+        )}
       </div>
 
       <div className="mt-24 p-12 rounded-3xl border border-zinc-900 bg-zinc-950 text-center">

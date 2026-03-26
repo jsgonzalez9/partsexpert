@@ -105,12 +105,12 @@ export const searchParts = async (query: string, filters?: {
   category?: string;
 }) => {
   let dbQuery = supabase
-    .from('parts')
+    .from('parts_data')
     .select('*, prices(*)')
     .or(`part_number.ilike.%${query}%,name.ilike.%${query}%`);
 
   if (filters?.category) {
-    dbQuery = dbQuery.eq('category', filters.category);
+    dbQuery = dbQuery.eq('subcategory', filters.category);
   }
 
   const { data, error } = await dbQuery.limit(20);
@@ -235,12 +235,22 @@ export const submitMechanicLead = async (lead: {
 
 export const getAllPartNumbers = async (limit = 1000) => {
   const { data, error } = await supabase
-    .from('parts')
+    .from('parts_data')
     .select('part_number')
     .limit(limit);
   
   if (error) throw error;
   return data.map(p => p.part_number);
+};
+
+export const getAllSymptomSlugs = async (limit = 1000) => {
+  const { data, error } = await supabase
+    .from('failure_modes')
+    .select('symptom')
+    .limit(limit);
+  
+  if (error) throw error;
+  return Array.from(new Set(data.map(p => p.symptom)));
 };
 
 export const getVehicleYears = async () => {

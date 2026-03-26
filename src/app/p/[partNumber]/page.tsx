@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPartByNumber } from '@/lib/supabase';
+import { Badge } from '@/components/ui/badge';
 import { ResultsView } from '@/components/ResultsView';
 import { CompatibilityChecker } from '@/components/CompatibilityChecker';
 
@@ -58,12 +59,20 @@ export default async function PartPage({ params }: Props) {
       '@type': 'Product',
       name: part.name,
       image: part.image_url,
-      description: part.description,
+      description: part.description || part.seo_description,
       sku: part.part_number,
       mpn: part.part_number,
       brand: {
         '@type': 'Brand',
-        name: part.brand,
+        name: part.brand || 'Aftermarket',
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'USD',
+        lowPrice: part.price ? (part.price * 0.9).toFixed(2) : '0.00',
+        highPrice: part.price ? (part.price * 1.1).toFixed(2) : '0.00',
+        offerCount: (part as any).prices?.length || 1,
+        availability: 'https://schema.org/InStock'
       }
     };
 
@@ -76,19 +85,19 @@ export default async function PartPage({ params }: Props) {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://partsexpert.app'
+          'item': 'https://partsexpert.vercel.app'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': part.category || 'Parts',
-          'item': `https://partsexpert.app/search?category=${encodeURIComponent(part.category || '')}`
+          'item': `https://partsexpert.vercel.app/parts?category=${encodeURIComponent(part.category || '')}`
         },
         {
           '@type': 'ListItem',
           'position': 3,
           'name': part.name,
-          'item': `https://partsexpert.app/p/${part.part_number}`
+          'item': `https://partsexpert.vercel.app/p/${part.part_number}`
         }
       ]
     };

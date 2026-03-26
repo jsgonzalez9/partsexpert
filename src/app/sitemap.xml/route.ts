@@ -6,14 +6,21 @@ export async function GET(req: Request) {
     const protocol = host.includes('localhost') ? 'http' : 'https';
     const baseUrl = `${protocol}://${host}`;
 
-    // Fetch parts and symptoms (Reduced limit for baseline stability)
-    const partNumbers = await getAllPartNumbers(5000);
-    const symptomSlugs = await getAllSymptomSlugs(1000);
+    // Fetch parts and symptoms (Expanded for SEO reach)
+    const partNumbers = await getAllPartNumbers(5000).catch(e => {
+        console.error('Part numbers fetch error:', e);
+        return [];
+    });
+    const symptomSlugs = await getAllSymptomSlugs(1000).catch(e => {
+        console.error('Symptom slugs fetch error:', e);
+        return [];
+    });
 
     const staticRoutes = [
       { path: '/', priority: '1.0' },
+      { path: '/parts', priority: '0.9' },
+      { path: '/symptoms', priority: '0.9' },
       { path: '/compatibility', priority: '0.8' },
-      { path: '/dashboard', priority: '0.8' },
     ];
 
     const today = new Date().toISOString().split('T')[0];
